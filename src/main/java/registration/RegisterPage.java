@@ -8,24 +8,32 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class RegisterPage {private static final String REGISTER_PATH = "//a[@href='/register']";
-private static final String LOGIN_PATH = "//a[@href='/login']";
+public class RegisterPage {
 
-private static final int TIMEOUT_SECONDS = 20;
+private static final int TIMEOUT_SECONDS = 100;
 
-public String login(WebDriver driver) throws IOException {    	
+public String create_user(WebDriver driver, String email, String pwd, String fName, String lName) throws IOException {    	
 	
 	WebDriverWait wait = new WebDriverWait(driver, TIMEOUT_SECONDS);
 	
-	WebElement registerElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(REGISTER_PATH)));
-	registerElement.click();
-	
-	//String expected_title = "Sign Up";
-	String actual_title = driver.getTitle();
+	WebElement emailElement = wait.until(ExpectedConditions.elementToBeClickable(By.id("email")));
+	emailElement.sendKeys(email);
 
-    WebElement loginElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(LOGIN_PATH)));
-    loginElement.click();
-     
-   return actual_title;    	
+    WebElement pwdElement = wait.until(ExpectedConditions.elementToBeClickable(By.id("password")));
+    pwdElement.sendKeys(pwd);
 
-}}
+    WebElement fNameElement = wait.until(ExpectedConditions.elementToBeClickable(By.id("firstName")));
+    fNameElement.sendKeys(fName);
+
+    WebElement lNameElement = wait.until(ExpectedConditions.elementToBeClickable(By.id("lastName")));
+    lNameElement.sendKeys(lName);
+
+    WebElement submitElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@type='submit']")));
+    submitElement.click();
+    
+    String actual_title = driver.getTitle();
+    System.out.println("Actual===" + actual_title);
+    return actual_title; 
+  }
+   
+}

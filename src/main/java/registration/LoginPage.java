@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage {
-	private static final int TIMEOUT_SECONDS = 50;
+	private static final int TIMEOUT_SECONDS = 100;
 	
 	public String login(WebDriver driver, String userName, String password) throws IOException {
 		

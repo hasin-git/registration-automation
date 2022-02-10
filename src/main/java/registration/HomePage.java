@@ -13,7 +13,7 @@ public class HomePage {
 	private static final String REGISTER_PATH = "//a[@href='/register']";
     private static final String LOGIN_PATH = "//a[@href='/login']";
  
-    private static final int TIMEOUT_SECONDS = 50;
+    private static final int TIMEOUT_SECONDS = 100;
  
     public String login(WebDriver driver) throws IOException {    	
     	
